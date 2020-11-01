@@ -1,4 +1,3 @@
-
 module.exports = (db) => {
 
   const getDashboardData = () => {
@@ -57,6 +56,20 @@ module.exports = (db) => {
   };
 
 
+
+  // const getDashboardData= () => {
+  //   const query = {
+  //     // text: 'SELECT * FROM users',
+  //     text: `SELECT count(*) FROM projects `
+  //   };
+
+  //   return db
+  //     .query(query)
+  //     .then((result) => console.log(result.rows))
+  //     .catch((err) => err);
+      
+  // };
+
   const EditClient = (first_name, last_name, phone_number, email, department, client_type, work_type, region, position_title, tweeter_username, initial_contact_made, id) => {
     const query = {
 
@@ -89,14 +102,30 @@ module.exports = (db) => {
 
       text: `INSERT INTO client_notes (notes, date, client_id) 
       VALUES ($1, now(), $2)`,
-     
-      values: [notes, id],
+      // text: `UPDATE client_notes SET notes=$1, date=now(), client_id=$2 WHERE client_id=$2`,
+      // values: [notes, id],
     };
     return db.query(query)
     .then((result) => result.rows)
     .catch((err) => err);
 
   }
+
+
+
+
+  // const updateNotesEditClient = (notes, id) => {
+  //   const query = {
+
+  //     text: `UPDATE client_notes SET notes=$1, date=now(), client_id=$2`,
+  //     values: [notes, id],
+  //   };
+  //   return db.query(query)
+  //   .then((result) => result.rows)
+  //   .catch((err) => err);
+
+  // }
+
 
   const getSingleUser = (id) => {
     const query = {
