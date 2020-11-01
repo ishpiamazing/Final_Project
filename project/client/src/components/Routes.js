@@ -7,6 +7,8 @@ import ProjectList from './ProjectList';
 import AddProject from './AddProject';
 import EditProject from './EditProject';
 import Dashboard from './Dashboard';
+import Notes from './Notes';
+
 const Routes = () => {
 return (
   <Switch >
@@ -18,6 +20,7 @@ return (
     <Route exact path='/projects/new' component={AddProject} />
     <Route exact path='/projects/:id/edit' component = {EditProject} />
     <Route exact path='/dashboard' component = {Dashboard} />
+    <Route exact path='/notes' component = {Notes} />
     {/* <Route exact path='/projects/:id/edit' component={EditProject} /> */}
   </Switch>
 )
