@@ -45,32 +45,8 @@ module.exports = (db) => {
   return result;
  })
   }
-//  return  db.query(query)
-//            .then ((res1) => { 
-                   
-//                 //  output.push(res1.rows)
-//                 db.query(query2)
-//                   .then ((result) => { 
-//                     //console.log(result.rows)
-//                     //output.push(res2.rows);
-//                     //console.log(res2);
-                   
-//                     result.rows.push(res1.rows[0])
-//                     console.log(result.rows)
-//                     return result.rows
-//                   })
-//                  // .catch ((err) => err);
-//                 })
-//      // return db
-//               };
-
-
-
-
-  
   const getUsers = () => {
     const query = {
-      // text: 'SELECT * FROM users',
       text: `SELECT * FROM clients WHERE client_status='A' order by id`
     };
 
@@ -94,6 +70,19 @@ module.exports = (db) => {
       .catch((err) => err);
     
   };
+
+  const getClientNotes = (id) => {
+
+    const query = {
+
+      text: `SELECT * FROM  client_notes where client_id = $1`,
+      values: [id],
+    };
+    return db.query(query)
+    .then((result) => result.rows)
+    .catch((err) => err);
+
+  }
 
   const addNotesEditClient = (notes, id) => {
     const query = {
@@ -258,7 +247,7 @@ const getProjects = () => {
     getSingleProject,
     addClientNotes,
     addNotesEditClient,
-    getDashboardData
-
+    getDashboardData,
+    getClientNotes
   };
 };

@@ -18,7 +18,7 @@ const ProjectItem = ({
  }) => {
   return (
     <tr> 
-      <td scope="row">{id}</td>
+      <td scope="row"><i class="fas fa-tasks"></i></td>
       <td>{name}</td>
       {/* <td>{number}</td> */}
       <td>{moment(start_date).format('DD/MM/YYYY')}</td>
@@ -36,7 +36,7 @@ const ProjectItem = ({
           data-toggle="tooltip"
           data-placement="top"
           title="Edit"
-          ><i class="fa fa-edit"></i>
+          ><i className="fa fa-edit"></i>
         </Link>
         &nbsp;
         <button
@@ -45,7 +45,7 @@ const ProjectItem = ({
           data-placement="top"
           title="Delete"
           type="button"
-          onClick={()=>{if (window.confirm('Are you sure you wish to delete this project?')) onDelete(id)}}><i class="fa fa-trash"></i>
+          onClick={()=>{if (window.confirm('Are you sure you wish to delete this project?')) onDelete(id)}}><i className="fa fa-trash"></i>
         </button>
       </td>
     </tr>

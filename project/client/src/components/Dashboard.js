@@ -74,8 +74,8 @@ const Dashboard = () => {
   ];
 
   const third = [
-    { name: 'Revenue In Progress', value: data6  },
-    { name: 'Revenue Completed', value: data7 },
+    { name: 'Revenue In Progress($)', value: data6  },
+    { name: 'Revenue Completed($)', value: data7 },
   ];
 
     return (

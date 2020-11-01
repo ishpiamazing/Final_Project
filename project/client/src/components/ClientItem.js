@@ -31,7 +31,7 @@ const ClientItem = ({id, first_name, last_name, email,department,client_type,wor
       <tr className="accordion-toggle collapsed" id={`accordion${id}`} data-toggle="collapse" data-parent={`#accordion${id}`} href={`#collapseTwo${id}`}>
         {/* <td className="expand-button"></td> */}
         {/* <th scope="row">{id}</th> */}
-        <td scope="row" style={{columnWidth: "20px"}}>{id}</td>
+        <td scope="row" style={{columnWidth: "20px"}}><i class="fas fa-user"></i></td>
         <td style={{columnWidth: "70px"}}>{first_name}</td>
         <td style={{columnWidth: "70px"}}>{last_name}</td>
         <td style={{columnWidth: "100px"}}>{email}</td>
@@ -50,7 +50,7 @@ const ClientItem = ({id, first_name, last_name, email,department,client_type,wor
           data-toggle="tooltip"
           data-placement="top"
           title="Edit"
-          ><i class="fa fa-edit"></i>
+          ><i className="fa fa-edit"></i>
           </Link>
           &nbsp;
           <button
@@ -59,7 +59,7 @@ const ClientItem = ({id, first_name, last_name, email,department,client_type,wor
           data-placement="top"
           title="Delete"
           type="button"
-          onClick={()=>{if (window.confirm('Are you sure you wish to delete this client?')) onDelete(id)}}><i class="fa fa-trash"></i>
+          onClick={()=>{if (window.confirm('Are you sure you wish to delete this client?')) onDelete(id)}}><i className="fa fa-trash"></i>
           </button>
         </td>
       </tr>
