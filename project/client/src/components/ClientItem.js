@@ -34,7 +34,7 @@ const ClientItem = ({id, first_name, last_name, email,department,client_type,wor
         <td scope="row" style={{columnWidth: "20px"}}><i class="fas fa-user"></i></td>
         <td style={{columnWidth: "70px"}}>{first_name}</td>
         <td style={{columnWidth: "70px"}}>{last_name}</td>
-        <td style={{columnWidth: "100px"}}>{email}</td>
+        <td style={{columnWidth: "200px"}}>{email}</td>
         <td style={{columnWidth: "80px"}}>{department}</td>
         <td style={{columnWidth: "80px"}}>{client_type}</td>
         <td style={{columnWidth: "100px"}}>{work_type}</td>

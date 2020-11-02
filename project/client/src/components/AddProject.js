@@ -3,7 +3,7 @@ import axios from 'axios';
 import ClientList from './ClientList';
 import styled from 'styled-components';
 const Wrapper = styled.div`
-  margin-top: 4em;
+  margin-top: 6em;
   margin-left: 8em;
   margin-right: 20em;
   margin-bottom: 5em;

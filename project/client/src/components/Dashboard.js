@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../css/Dashboard.css'
 
 const Wrapper = styled.div`
-  margin-top: 4em;
+  margin-top: 6em;
   margin-left: 8em;
   margin-right: 8em;
   margin-bottom: 5em;
@@ -61,7 +61,7 @@ const Dashboard = () => {
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
     return (
-      <text x={x} y={y} fill="black" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+      <text x={x} y={y} fill="black" textAnchor={x > cx ? 'end' : 'start'} dominantBaseline="central">
         {`${(percent * 100).toFixed(0)}%`}
       </text>
     );
@@ -143,9 +143,9 @@ const Dashboard = () => {
                 data={third}
                 cx={150}
                 cy={200}
-                innerRadius={60}
-                outerRadius={100}
-                fill="#8884d8"
+                innerRadius={70}
+                outerRadius={120}
+                // fill="#8884d8"
                 paddingAngle={5}
                 label={renderCustomizedLabel}
                 labelLine={false}

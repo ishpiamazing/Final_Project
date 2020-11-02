@@ -4,7 +4,7 @@ import ClientItem from './ClientItem';
 import '../css/ClientList.css';
 import styled from 'styled-components';
 const Wrapper = styled.div`
-  margin-top: 4em;
+  margin-top: 6em;
   margin-left: 8em;
   margin-right: 2em;
   margin-bottom: 5em;
