@@ -31,32 +31,15 @@ const [client, setClient] = useState ({
 });
 
 
-// const [notes1, setNotes] = useState([]    
-//   );
-//   useEffect(() => {
-//     Promise.all([
-//       axios.get('/notes'),
-//       console.log(`Notes ,${notes1}`)
-//     ]).then((all) => {
-//       setNotes(all[0].data);   
-//    });
-   
-//   }, []);
-
-
 useEffect (() => {
   const getClient = () => {  
   axios.get(`/clients/${id}/edit`)
    //axios.get(`/clients/${id}`)
    .then (
      res=> {
-     //  console.log(res.data.name);
-    //if (res.data.name) {
     if (res.data.id) {
     
       setClient(res.data);
-     // console.log(res.data);
-    
     } else {
       alert('client not found');
     }
@@ -66,7 +49,6 @@ useEffect (() => {
 }, [id]);
 
 const handleChange = (event) => {
-  console.log("handle change function");
   setClient ({
   ...client, // save the previous state
   [event.target.name] : event.target.value 
@@ -76,8 +58,6 @@ const handleChange = (event) => {
  const SaveClient= () => {
   axios.put(`/clients/${id}/edit`, client)
    .then (res => {
-    console.log("save client",res);
-     console.log("props",props);
      props.history.push('/clients');
  } 
   

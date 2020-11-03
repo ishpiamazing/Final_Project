@@ -25,14 +25,12 @@ const ProjectList = () => {
 
   const getProjects = async()=>{
     const response = await axios.get(`/projects`);
-    console.log("console log of getProjects", response); 
     setProjects(response.data);
    }
   const handleDelete =(id) => {
   
     axios.delete(`/projects/${id}`)
     .then( res=> {
-      console.log("res", res);
       if(res.status !== 200) {
         alert("Not able to delete project");
       }

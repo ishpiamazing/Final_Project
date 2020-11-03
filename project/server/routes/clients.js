@@ -36,24 +36,6 @@ module.exports = ({ getUsers, getUserByEmail, addUser, EditClient, deleteClients
     }
     );
 
-  // router.post('/', (req, res) => {
-  //   console.log("response post", res);
-  //   const {first_name, last_name, email, tweeter_username} = req.body;
-
-  //   getUserByEmail(email)
-  //     .then(user => {
-
-  //       if (user) {
-  //         res.json({msg: 'Sorry, a user account with this email already exists'});
-  //       } else {
-  //         return addUser(first_name, last_name, email, tweeter_username)
-  //       }
-
-  //     })
-  //     .then(newUser => res.json(newUser))
-  //     .catch(err => res.json({error: err.message}));
-
-  //  });
     router.post('/', (req, res) => {
 
     const {first_name, last_name, phone_number, email, department, client_type, work_type, region, position_title, tweeter_username, initial_contact_made, notes} = req.body;
@@ -74,8 +56,6 @@ module.exports = ({ getUsers, getUserByEmail, addUser, EditClient, deleteClients
        console.log("before adding the notes");
        addClientNotes(notes)
         res.json(newUser)
-       //return addClientNotes()
-        
       })
       .catch(err => res.json({error: err.message}));
    
@@ -95,17 +75,6 @@ module.exports = ({ getUsers, getUserByEmail, addUser, EditClient, deleteClients
   .catch ((err) => { res.send ({msg: err})})
   }); 
 
-
-   //delete a client
-
-  // router.put('/:id', (req, res) => {  
-  //     console.log("inside the route", req.body);
-  //    const id = req.params.id;
-  //    console.log("the id is ", id); 
-  //    deleteClients(id)
-  //    .then(clients => res.json(clients))
-  //    .catch((err) => res.json({ err }));
-  //  });
  
   router.delete('/:id', (req, res) => {
 

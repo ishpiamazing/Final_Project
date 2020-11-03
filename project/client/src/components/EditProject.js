@@ -42,7 +42,6 @@ const [clients, setClients] = useState([]
   useEffect(() => {
     Promise.all([
       axios.get('/clients'),
-      console.log(clients)
     ]).then((all) => {
       setClients(all[0].data);   
    });
@@ -54,12 +53,9 @@ useEffect (() => {
    //axios.get(`/clients/${id}`)
    .then (
      res=> {
-     //  console.log(res.data.name);
-    //if (res.data.name) {
     if (res.data.id) {
     
       setProject(res.data);
-      console.log(res.data);
     
     } else {
       alert('project not found');
@@ -69,7 +65,6 @@ useEffect (() => {
     getProject();
 }, [id]);
 const handleChange = (event) => {
- // console.log("handle change function");
   setProject ({
   ...project, // save the previous state
   [event.target.name] : event.target.value 
@@ -79,8 +74,6 @@ const handleChange = (event) => {
  const SaveProject= () => {
   axios.put(`/projects/${id}/edit`, project)
    .then (res => {
-    //console.log("save project",res);
-     console.log("props",props);
      props.history.push('/projects');
    }   
   );
@@ -94,7 +87,6 @@ const handleChange = (event) => {
   }
  };
  
-console.log(project);
 const onCancel = () => {
 
   props.history.push('/projects');
@@ -104,19 +96,6 @@ return (
 <h2 className="display-7">Edit Project</h2>
 <br/>
 <form onSubmit = {handleSubmit}>
-    
-       {/* number */}
-       {/* <div className ="form-group">
-        <label htmlFor="number">Number</label>
-        <input 
-        type="text"
-        className="form-control"
-        name="number"
-        placeholder="Enter project number"
-        defaultValue={project.number}
-        onChange={handleChange}
-        required />
-      </div> */}
 
       {/* name */}
       <div className ="form-group">
@@ -164,7 +143,7 @@ return (
         placeholder="Contractor Name"
         value={project.assigned_to}
         onChange={handleChange}
-        required />
+        />
       </div>
       <div className ="form-group">
         <label htmlFor="type">Project Type</label>
@@ -191,19 +170,6 @@ return (
         onChange={handleChange}
          />
       </div>
-      {/* client */}
-      {/* <div className ="form-group">
-        <label htmlFor="client">Client Name</label>
-        <input 
-        type="text"
-        className="form-control"
-        name="client"
-        placeholder="Enter Client Name"
-        defaultValue={project.client}
-        onChange={handleChange}
-        required />
-      </div> */}
-
       <div className ="form-group">
         <label htmlFor="type">Project Stage</label>
         <select 
@@ -269,8 +235,8 @@ return (
         onChange={handleChange}
         required >
           <option value="Select">Select....</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
         </select>
       </div>
 
@@ -290,19 +256,7 @@ return (
       <div className ="form-group">
         <label htmlFor="first_name">Client Name</label>
         <div></div>
-        {/* <select onChange={handleChange} name="client_id"
-        type="text"
-        className="form-control">
-        <option value="Select">Select....</option>
-      {clients.map(client => (
-        <option
-          key={client.id}
-          value={client.id}
-        >
-          {client.first_name}
-        </option>
-      ))} */}
-
+    
 
 <select onChange={handleChange} name="client_id"
         type="text"

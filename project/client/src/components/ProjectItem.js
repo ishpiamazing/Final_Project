@@ -18,7 +18,7 @@ const ProjectItem = ({
  }) => {
   return (
     <tr> 
-      <td scope="row"><i class="fas fa-tasks"></i></td>
+      <td scope="row"><i className="fas fa-tasks"></i></td>
       <td>{name}</td>
       {/* <td>{number}</td> */}
       <td>{moment(start_date).format('DD/MM/YYYY')}</td>

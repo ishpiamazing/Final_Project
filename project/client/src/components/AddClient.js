@@ -33,18 +33,15 @@ const AddClient = (props) => {
    ...client, // save the previous state
    [e.target.name] : e.target.value 
    });
-   console.log(client);
   };
 
   const handleSubmit = (event)=> {
     event.preventDefault();
-    console.log("client",client);
     SaveClient();
   }
   const SaveClient=()=>{ axios.post(`/clients`,client)
     .then(
       (res)=>{
-     console.log("response of the post request",res);
      props.history.push('/clients');
      }, 
      (error) => {
@@ -104,7 +101,6 @@ const AddClient = (props) => {
       className="form-control"
       name="email"
       placeholder="Enter Email"
-      // pattern=".+@globex.com" 
       // pattern = "[^@\s]+@[^@\s]+" 
       size="30"
       value={client.email}
@@ -195,7 +191,6 @@ const AddClient = (props) => {
       type="text"
       className="form-control"
       name="initial_contact_made"
-      // placeholder="Enter Department"
       value={client.initial_contact_made}
       onChange={handleChange}
       required >

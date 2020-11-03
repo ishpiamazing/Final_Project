@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; 
 import ClientNoteItem from './ClientNoteItem'; 
 import axios from 'axios';
 
@@ -11,12 +10,10 @@ const NoteItem = ({id, first_name, last_name, email,department,client_type}) => 
     Promise.all([
       axios.get(`/clients/${id}/notes`),
     ]).then((all) => {
-      console.log(all);
       setNotes(all[0].data);   
    });
   }, []);
 
-  console.log("notes", notes);
   const clientNotes = notes.map((note) =>
     <ClientNoteItem
     key = {note.id}
@@ -28,9 +25,7 @@ const NoteItem = ({id, first_name, last_name, email,department,client_type}) => 
   return (
     <>
       <tr className="accordion-toggle collapsed" id={`accordion${id}`} data-toggle="collapse" data-parent={`#accordion${id}`} href={`#collapseTwo${id}`}>
-        {/* <td className="expand-button"></td> */}
-        {/* <th scope="row">{id}</th> */}
-        <td scope="row" style={{columnWidth: "20px"}}><i class="fas fa-user"></i></td>
+        <td scope="row" style={{columnWidth: "20px"}}><i className="fas fa-user"></i></td>
         <td style={{columnWidth: "70px"}}>{first_name}</td>
         <td style={{columnWidth: "70px"}}>{last_name}</td>
         <td style={{columnWidth: "100px"}}>{email}</td>
@@ -39,7 +34,6 @@ const NoteItem = ({id, first_name, last_name, email,department,client_type}) => 
       </tr>
       
       <tr className="hide-table-padding">
-        {/* <td></td> */}
         <td colSpan="8">
           <div id={`collapseTwo${id}`} className="collapse in p-3">
             <table>

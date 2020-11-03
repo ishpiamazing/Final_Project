@@ -11,11 +11,9 @@ const ClientItem = ({id, first_name, last_name, email,department,client_type,wor
     Promise.all([
       axios.get(`/clients/${id}/projects`),
     ]).then((all) => {
-      console.log(all);
       setProjects(all[0].data);   
    });
   }, []);
-  console.log("projects", projects);
   const clientProjects = projects.map((project) =>
     <ClientProjectItem
     key = {project.id}
@@ -31,7 +29,7 @@ const ClientItem = ({id, first_name, last_name, email,department,client_type,wor
       <tr className="accordion-toggle collapsed" id={`accordion${id}`} data-toggle="collapse" data-parent={`#accordion${id}`} href={`#collapseTwo${id}`}>
         {/* <td className="expand-button"></td> */}
         {/* <th scope="row">{id}</th> */}
-        <td scope="row" style={{columnWidth: "20px"}}><i class="fas fa-user"></i></td>
+        <td scope="row" style={{columnWidth: "20px"}}><i className="fas fa-user"></i></td>
         <td style={{columnWidth: "70px"}}>{first_name}</td>
         <td style={{columnWidth: "70px"}}>{last_name}</td>
         <td style={{columnWidth: "200px"}}>{email}</td>
@@ -73,7 +71,6 @@ const ClientItem = ({id, first_name, last_name, email,department,client_type,wor
               <tr>
                 <th scope="col" style={{columnWidth: "200px"}}>Name</th>
                 <th scope="col" style={{columnWidth: "200px"}}>Type</th>
-                {/* <th scope="col">Client</th> */}
                 <th scope="col" style={{columnWidth: "200px"}}>Start Date</th>
                 <th scope="col" style={{columnWidth: "200px"}}>End Date</th>
               </tr>

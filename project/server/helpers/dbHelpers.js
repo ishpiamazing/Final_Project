@@ -2,7 +2,6 @@ module.exports = (db) => {
 
   const getDashboardData = () => {
     //const output = [];
-    console.log ("inside the function");
     const query1 = { // quality reviews in progress
 
       text: `SELECT COUNT(*) FROM projects WHERE type='Quality Review' and project_stage ='Work In Progress' and project_status = 'A'`
@@ -36,11 +35,10 @@ module.exports = (db) => {
     };
 
  const promisesArray=[db.query(query1), db.query(query2), db.query(query3), db.query(query4), db.query(query5), db.query(query6), db.query(query7)];
- //const promisesArray=[db.query(query1), db.query(query2)];
+
  return Promise.all(promisesArray)
  .then (result => {
 
-  console.log(result);
   return result;
  })
   }
@@ -55,20 +53,6 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-
-
-  // const getDashboardData= () => {
-  //   const query = {
-  //     // text: 'SELECT * FROM users',
-  //     text: `SELECT count(*) FROM projects `
-  //   };
-
-  //   return db
-  //     .query(query)
-  //     .then((result) => console.log(result.rows))
-  //     .catch((err) => err);
-      
-  // };
 
   const EditClient = (first_name, last_name, phone_number, email, department, client_type, work_type, region, position_title, tweeter_username, initial_contact_made, id) => {
     const query = {
@@ -100,33 +84,14 @@ module.exports = (db) => {
   const addNotesEditClient = (notes, id) => {
     const query = {
 
-      text: `INSERT INTO client_notes (notes, date, client_id) 
-      VALUES ($1, now(), $2)`,
-      // text: `UPDATE client_notes SET notes=$1, date=now(), client_id=$2 WHERE client_id=$2`,
-      // values: [notes, id],
+      text: `INSERT INTO client_notes (notes, date, client_id) VALUES ($1, now(), $2)`,
+      values: [notes, id],
     };
     return db.query(query)
     .then((result) => result.rows)
     .catch((err) => err);
 
   }
-
-
-
-
-  // const updateNotesEditClient = (notes, id) => {
-  //   const query = {
-
-  //     text: `UPDATE client_notes SET notes=$1, date=now(), client_id=$2`,
-  //     values: [notes, id],
-  //   };
-  //   return db.query(query)
-  //   .then((result) => result.rows)
-  //   .catch((err) => err);
-
-  // }
-
-
   const getSingleUser = (id) => {
     const query = {
       text: `SELECT * FROM clients WHERE id= $1 and client_status='A'`,
@@ -139,7 +104,7 @@ module.exports = (db) => {
   }
   const getUserByEmail = (email) => {
     const query = {
-      text: `SELECT * FROM clients WHERE email = $1`,
+      text: `SELECT * FROM clients WHERE email = $1 and client_status = 'A'`,
       values: [email],
     };
 

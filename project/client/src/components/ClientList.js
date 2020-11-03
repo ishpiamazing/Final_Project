@@ -25,14 +25,11 @@ useEffect(() => {
 
 const getClients = async()=>{
  const response = await axios.get(`/clients`);
- console.log("console log of getClients", response); 
  setClients(response.data);
 }
 const handleDelete =(id) => {
-  console.log(id);
   axios.delete(`/clients/${id}`)
   .then( res=> {
-    console.log("delete res", res);
     if(res.status !== 200) {
       alert("Not able to delete client");
     }
@@ -62,7 +59,6 @@ const handleDelete =(id) => {
  )
  
 return (
-/*<div className="table-responsive">*/
   <Wrapper>
   <h2 className="display-7">Clients</h2> 
   <table className="table table-striped">
@@ -87,7 +83,6 @@ return (
   </tbody>
 </table>
 </Wrapper>
-/*</div>*/
 );
 
 }

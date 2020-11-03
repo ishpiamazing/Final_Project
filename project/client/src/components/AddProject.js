@@ -37,7 +37,6 @@ const AddProject = (props) => {
   useEffect(() => {
     Promise.all([
       axios.get('/clients'),
-      console.log(clients)
     ]).then((all) => {
       setClients(all[0].data);   
    });
@@ -65,7 +64,6 @@ const AddProject = (props) => {
 
   const submitProject=()=>{ 
 
-    console.log("inside submit project", project);
     axios.post(`/projects`, project)
     .then((res)=>{
     alert("Project Added!!");
@@ -98,19 +96,6 @@ const AddProject = (props) => {
       <h2 className="display-7">Add Project</h2>
     <form onSubmit = {handleSubmit}>
 
-
-       {/* number */}
-       {/* <div className ="form-group">
-        <label htmlFor="number">Number</label>
-        <input 
-        type="text"
-        className="form-control"
-        name="number"
-        placeholder="Enter project number"
-        defaultValue={project.number}
-        onChange={handleChange}
-        required />
-      </div> */}
 
       {/* name */}
       <div className ="form-group">
@@ -163,7 +148,7 @@ const AddProject = (props) => {
         placeholder="Contractor Name"
         value={project.assigned_to}
         onChange={handleChange}
-        required />
+        />
       </div>
 
       {/* type */}
@@ -194,21 +179,6 @@ const AddProject = (props) => {
         onChange={handleChange}
          />
       </div>
-  
-      {/* client */}
-      {/* <div className ="form-group">
-        <label htmlFor="client">Client Name</label>
-        <input 
-        type="text"
-        className="form-control"
-        name="client"
-        placeholder="Enter Client Name"
-        defaultValue={project.client}
-        onChange={handleChange}
-        required />
-      </div> */}
-
-
       <div className ="form-group">
         <label htmlFor="type">Project Stage</label>
         <select 
@@ -257,8 +227,6 @@ const AddProject = (props) => {
         className="form-control"
         name="total_price"
         value = {Math.round((parseFloat(project.project_value * 0.13) + parseFloat(project.project_value))* 100) / 100}
-      //  value = {Math.round((parseFloat(project.project_value * 0.13) + parseFloat(project.project_value))* 100) / 100}
-
         onChange={handleChange}
         />
       </div>
